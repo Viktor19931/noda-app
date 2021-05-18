@@ -1,11 +1,14 @@
 const express = require("express");
 const path = require("path");
 
+const getPath = require("../helpers/getPath");
+
 const router = express.Router();
 
 // /admin/add-product => GET
 router.get("/add-product", (req, res) => {
-  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
+  console.log(getPath(["..", "views", "add-product.html"]));
+  res.sendFile(getPath(["..", "views", "add-product.html"]));
 });
 
 // /admin/add-product => POST
