@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const getPath = require("./helpers/getPath");
 
@@ -10,11 +11,13 @@ const shopRoutes = require("./routes/shop");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(express.static(getPath(["public"])));
+
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(getPath(["..", "views", "404.html"]));
+  res.status(404).sendFile(getPath(["views", "404.html"]));
 });
 
 app.listen(3000);

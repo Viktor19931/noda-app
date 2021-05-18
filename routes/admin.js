@@ -7,8 +7,8 @@ const router = express.Router();
 
 // /admin/add-product => GET
 router.get("/add-product", (req, res) => {
-  console.log(getPath(["..", "views", "add-product.html"]));
-  res.sendFile(getPath(["..", "views", "add-product.html"]));
+  console.log(getPath(["views", "add-product.html"]));
+  res.sendFile(getPath(["views", "add-product.html"]));
 });
 
 // /admin/add-product => POST
