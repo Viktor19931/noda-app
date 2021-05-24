@@ -4,13 +4,12 @@ exports.getAddProducts = (req, res) => {
   res.render("admin/add-product", {
     pageTitle: "Add Product",
     path: "/admin/add-product",
-    isAddProductPage: true,
-    formsCss: true,
   });
 };
 
 exports.postAddProduct = (req, res) => {
-  const product = new Product(req.body.title);
+  const { title, description, imageUrl, price } = req.body;
+  const product = new Product(title, description, imageUrl, price);
   product.save();
   res.redirect("/");
 };
